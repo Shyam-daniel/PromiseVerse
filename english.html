@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Bible Verse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("images/wishes%20poster1-01.jpg");
+            background-size: cover;
+            margin: 0;
+        }
+        .verse-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="verse-container" id="verse-container">
+    <h1> Your Promise verse for 2025</h1>
+    <p id="verse"></p>
+</div>
+
+<script>
+    const verses = [
+        "I will break the yoke off their necks and will tear off their bonds; Jeremiah 30:8",
+        "So do not be afraid,… do not be dismayed,...‘I will surely save you out of a distant place, your descendants from the land of their exile. Jeremiah 30:10",
+        "I am with you and will save you,’ Jeremiah 30:11",
+        "But I will restore you to health and heal your wounds,’ Jeremiah 30:17",
+        "I will restore the fortunes of Jacob’s tents and have compassion on his dwellings; Jeremiah 30:18",
+        "I will add to their numbers, and they will not be decreased; will bring them honor, and they will not be disdained. Jeremiah 30:19",
+        "So you will be my people, and I will be your God.’” Jeremiah 30:22",
+        "I will be the God of all the families of Israel, and they will be my people.” Jeremiah 31:1",
+        "I have loved you with an everlasting love; I have drawn you with unfailing kindness. Jeremiah 31:3",
+        "I will build you up again, Jeremiah 31:4",
+        "I will lead them beside streams of water on a level path where they will not stumble, because I am Israel’s father, Jeremiah 31:9",
+        "...will watch over his flock like a shepherd.’ Jeremiah 31:10",
+        "They will be like a well-watered garden, and they will sorrow no more. Jeremiah 31:12",
+        "I will turn their mourning into gladness; I will give them comfort and joy instead of sorrow. Jeremiah 31:13",
+        "I will satisfy the priests with abundance, and my people will be filled with my bounty,” Jeremiah 31:14",
+        "Restrain your voice from weeping and your eyes from tears, for your work will be rewarded,” Jeremiah 31:16",
+        "...I have great compassion for him,” Jeremiah 31:20",
+        "I will refresh the weary and satisfy the faint.” Jeremiah 31:25",
+        "I will put my law in their minds and write it on their hearts. I will be their God, and they will be my people. Jeremiah 31:33",
+        "they will all know me, from the least of them to the greatest,” Jeremiah 31:34",
+        "Nothing is too hard for you. Jeremiah 32:17",
+        "I am the Lord, the God of all mankind. Is anything too hard for me? Jeremiah 32:27",
+        "I will make an everlasting covenant with them: I will never stop doing good to them, Jeremiah 32:40",
+        "I will inspire them to fear me, so that they will never turn away from me. Jeremiah 32:40",
+        "I will rejoice in doing them good Jeremiah 32:41",
+        "I will give them all the prosperity I have promised them. Jeremiah 32:42",
+        "Call to me and I will answer you and tell you great and unsearchable things you do not know.’ Jeremiah 33:3",
+        "Nevertheless, I will bring health and healing to it; I will heal my people and will let them enjoy abundant peace and security. Jeremiah 33:6",
+        "For I will restore their fortunes and have compassion on them.’” Jeremiah 33:26",
+        "I will save you; Jeremiah 39:18",
+        "I will build you up...I will plant you… Jeremiah 42:10",
+        "Do not be afraid, for I am with you,” Jeremiah 46:28",
+        "Because of the Lord’s great love we are not consumed, for his compassions never fail. Lamentations 3:22",
+        "I will give them an undivided heart and put a new spirit in them; Ezekial 11:19",
+        "I will...give them a heart of flesh. Ezekial 11:20",
+        "They will be my people, and I will be their God. Ezekial 11:20",
+        "I will establish an everlasting covenant with you. Ezekial 16:60",
+        "I will be proved holy through you in the sight of the nations. Ezekial 20:41",
+        "I am concerned for you and will look on you with favor; Ezekial 36:9",
+        "...will make you prosper more than before Ezekial 36:11",
+        "I will give you a new heart and put a new spirit in you; I will remove from you your heart of stone and give you a heart of flesh. Ezekial 36:26",
+        "I will put my Spirit in you and move you to follow my decrees and be careful to keep my laws. Ezekial 36:27",
+        "Then you will live in the land I gave your ancestors; Ezekial 36:28",
+        "you will be my people, and I will be your God. Ezekial 36:28",
+        "I will make a covenant of peace with them; it will be an everlasting covenant. Ezekial 37:26",
+        "I will establish them and increase their numbers, and I will put my sanctuary among them forever. Ezekial 37:26",
+        "My dwelling place will be with them; Ezekial 37:27",
+        "As soon as you began to pray, a word went out,….for you are highly esteemed. Daniel 9:23",
+        "Do not be afraid,...your words were heard, Daniel 10:12",
+        "Do not be afraid, you who are highly esteemed,” “Peace! Be strong now; be strong.” Daniel 10:19",
+        "I will betroth you in righteousness and justice, Hosea 2:19",
+        "I will...give them a heart of flesh. Hosea 14:4",
+        "You will have plenty to eat, until you are full, and you will praise the name of the Lord your God, who has worked wonders for you; Joel 2:26",
+        "never again will my people be shamed. Joel 2:27",
+        "Then the Lord God Almighty will be with you, just as you say he is. Amos 5:14",
+        "I will bring my people Israel back from exile. Amos 9:14",
+        "I will plant Israel in their own land, Amos 9:15",
+        "the Lord will redeem you out of the hand of your enemies. Micah 4:10",
+        "Though I have fallen, I will rise. Though I sit in darkness, the Lord will be my light. Micah 7:8",
+        "The Lord is good, a refuge in times of trouble. He cares for those who trust in him, Nahum 1:7",
+        "I have afflicted you,… I will afflict you no more. Nahum 1:12",
+        "yet I will rejoice in the Lord, I will be joyful in God my Savior. Habakkuk 3:18",
+        "he makes my feet like the feet of a deer, he enables me to tread on the heights. Habakkuk 3:19",
+        "The Lord, the King of Israel, is with you; never again will you fear any harm. Zephaniah 3:15",
+        "Do not fear, Zion; do not let your hands hang limp. Zephaniah 3:16",
+        "The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; Zephaniah 3:17",
+        "He will take great delight in you; in his love he will no longer rebuke you, Zephaniah 3:17",
+        "I will give you honor and praise among all the peoples of the earth Zephaniah 3:20",
+        "From this day on I will bless you.’” Haggai 2:19",
+        "I will take you, my servant … and I will make you like my signet ring, Haggai 2:23",
+        "whoever touches you touches the apple of his eye Zechariah 2:8",
+        "Shout and be glad, Daughter Zion. For I am coming, and I will live among you,” Zechariah 2:10",
+        "Do not be afraid, but let your hands be strong.” Zechariah 8:13",
+        "I will restore twice as much to you. Zechariah 9:12",
+        "He gives showers of rain to all people, Zechariah 10:1",
+        "I will strengthen them in the Lord and in his name they will live securely,” Zechariah 10:12",
+        "You will go out and frolic like well-fed calves. Malachi 4:2",
+        "Then you will trample on the wicked; they will be ashes under the soles of your feet Malachi 4:3",
+        "They will be mine,” “In the day when I make up my treasured possession. Malachi 3:17"
+    ];
+
+    window.onload = function() {
+        const verseContainer = document.getElementById('verse');
+        const randomVerse = verses[Math.floor(Math.random() * verses.length)];
+        verseContainer.textContent = randomVerse;
+    };
+</script>
+
+</body>
+</html>

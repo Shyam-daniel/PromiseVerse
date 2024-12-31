@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'NudiBold';
+    src: url('fonts/Nudi-01-e-Bold.ttf') format('truetype');
+}
+
+body {
+    font-family: 'NudiBold', sans-serif; /* Apply Nudi font */
+}
